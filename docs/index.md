@@ -20,6 +20,6 @@ This is your index page. You can edit its contents at `docs/index.hbs`
 
 ### Source code
 
-The [source code is available on Bitbucket](https://bitbucket.org/brootaylor/front-end-component-library-framework). See the [README](https://bitbucket.org/brootaylor/front-end-component-library-framework/src/master/README.md) for installation instructions.
+The [source code is available on Bitbucket](https://github.com/brootaylor/component-library-starter-kit). See the [README](https://github.com/brootaylor/component-library-starter-kit/blob/main/README.md) for installation instructions.
 
 
