@@ -1,0 +1,31 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+	"context": {
+		"videoThirdParty": true,
+		"videoVendor": "www.youtube.com/embed/",
+		"videoId": "Z8YbxFV7v2o"
+	},
+	"variants": [
+		{
+			"name": "Custom video",
+			"context": {
+				"videoCustom": true,
+				"videoThirdParty": false,
+				"videoVendor": false,
+				"videoId": false
+			}
+		},
+		{
+			"name": "Third party Youtube video"
+		},
+		{
+			"name": "Third party Vimeo video",
+			"context": {
+				"videoThirdPartyVimeo": true,
+				"videoVendor": "player.vimeo.com/video/",
+				"videoId": "122375452"
+			}
+		}
+	]
+}

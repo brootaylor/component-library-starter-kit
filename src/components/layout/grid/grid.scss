@@ -1,0 +1,500 @@
+
+/* ==========================================================================
+   Grid rules
+   ========================================================================== */
+
+
+//////////////////////////////////////////////////////////////////////////////////
+/* GRID MIXINS
+============================================= */
+
+@mixin grid-setup(
+	$grid-columns: 12, 				// Number of columns (NOTE: Needs to be increments of '12' eg. 12, 24 etc.)
+	$grid-gutter-default: 30px, 	// Default grid gutter width
+	$grid-gutter-medium: false, 	// *OPTIONAL*: If needing to increase gutter size on a 'medium' sized screen
+	$grid-gutter-large: false 		// *OPTIONAL*: If needing to increase gutter size on a 'large' sized screen
+	) {
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Fallback grid version (uses Flexbox ie. display: flex)
+	// =================================================================================================================
+	.grid {
+		@extend %no-list;
+		display: flex;
+		flex-flow: row wrap;
+		margin-left: pxToEm(-($grid-gutter-default / 2), $font-size-base);
+		margin-right: pxToEm(-($grid-gutter-default / 2), $font-size-base);
+
+			// Renders if optional 'medium' gutter value added
+			@if $grid-gutter-medium {
+				@include break-point-min($bp-m) {
+					margin-left: pxToEm(-($grid-gutter-medium / 2), $font-size-base);
+					margin-right: pxToEm(-($grid-gutter-medium / 2), $font-size-base);
+				}
+			}
+
+			// Renders if optional 'large' gutter value added
+			@if $grid-gutter-large {
+				@include break-point-min($bp-l) {
+					margin-left: pxToEm(-($grid-gutter-large / 2), $font-size-base);
+					margin-right: pxToEm(-($grid-gutter-large / 2), $font-size-base);
+				}
+			}
+
+		// Default grid panel / column rules...
+		& > .grid-panel {
+			flex: 0 0 auto;
+			min-width: 0;
+			min-height: 0;
+			margin-left: pxToEm(($grid-gutter-default / 2), $font-size-base);
+			margin-right: pxToEm(($grid-gutter-default / 2), $font-size-base);
+			width: calc(100% - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+				// Renders if optional 'medium' gutter value added
+				@if $grid-gutter-medium {
+					@include break-point-min($bp-m) {
+						margin-left: pxToEm(($grid-gutter-medium / 2), $font-size-base);
+						margin-right: pxToEm(($grid-gutter-medium / 2), $font-size-base);
+						width: calc(100% - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						margin-left: pxToEm(($grid-gutter-large / 2), $font-size-base);
+						margin-right: pxToEm(($grid-gutter-large / 2), $font-size-base);
+						width: calc(100% - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+		}
+
+		// 50-50 split
+		&.grid-halves {
+			& > .grid-panel {
+				@include break-point-min($bp-m) {
+					width: calc((100% / 2) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						width: calc((100% / 2) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						width: calc((100% / 2) - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+			}
+		}
+
+		// Thirds split
+		&.grid-thirds {
+			& > .grid-panel {
+				@include break-point-min($bp-m) {
+					width: calc((100% / 3) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						width: calc((100% / 3) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						width: calc((100% / 3) - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+			}
+		}
+
+		// 50-50 split (medium screen size +)
+		// then...
+		// Thirds split (large screen size +)
+		&.grid-halves-thirds {
+			& > .grid-panel {
+				@include break-point-min($bp-m) {
+					width: calc((100% / 2) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						width: calc((100% / 2) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				@include break-point-min($bp-l) {
+					width: calc((100% / 3) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'large' gutter value added
+					@if $grid-gutter-large {
+						width: calc((100% / 3) - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+			}
+		}
+
+		// 50-50 split (medium screen size +)
+		// then...
+		// Quarters split (large screen size +)
+		&.grid-quarters {
+			& > .grid-panel {
+				@include break-point-min($bp-m) {
+					width: calc((100% / 2) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						width: calc((100% / 2) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				@include break-point-min($bp-l) {
+					width: calc((100% / 4) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'large' gutter value added
+					@if $grid-gutter-large {
+						width: calc((100% / 4) - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+			}
+		}
+
+		// Two-thirds / One-third split (medium screen size +)
+		// then...
+		// Three quarters / One quarter split (large screen size +)
+		&.grid-wideNarrow {
+			& > .grid-panel {
+				@include break-point-min($bp-m) {
+					width: calc((100% / 3 * 2) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						width: calc((100% / 3 * 2) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				@include break-point-min($bp-l) {
+					width: calc((100% / 4 * 3) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'large' gutter value added
+					@if $grid-gutter-large {
+						width: calc((100% / 4 * 3) - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+
+				&:last-child {
+					@include break-point-min($bp-m) {
+						width: calc((100% / 3) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+						// Renders if optional 'medium' gutter value added
+						@if $grid-gutter-medium {
+							width: calc((100% / 3) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+						}
+					}
+
+					@include break-point-min($bp-l) {
+						width: calc((100% / 4) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+						// Renders if optional 'large' gutter value added
+						@if $grid-gutter-large {
+							width: calc((100% / 4) - #{pxToEm($grid-gutter-large, $font-size-base)});
+						}
+					}
+				}
+			}
+		}
+
+		// One-third / Two-third split  (medium screen size +)
+		// then...
+		// One quarter / Three quarter split (large screen size +)
+		&.grid-narrowWide {
+			& > .grid-panel {
+				@include break-point-min($bp-m) {
+					width: calc((100% / 3) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						width: calc((100% / 3) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+					}
+				}
+
+				@include break-point-min($bp-l) {
+					width: calc((100% / 4) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+					// Renders if optional 'large' gutter value added
+					@if $grid-gutter-large {
+						width: calc((100% / 4) - #{pxToEm($grid-gutter-large, $font-size-base)});
+					}
+				}
+
+				&:last-child {
+					@include break-point-min($bp-m) {
+						width: calc((100% / 3 * 2) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+						// Renders if optional 'medium' gutter value added
+						@if $grid-gutter-medium {
+							width: calc((100% / 3 * 2) - #{pxToEm($grid-gutter-medium, $font-size-base)});
+						}
+					}
+
+					@include break-point-min($bp-l) {
+						width: calc((100% / 4 * 3) - #{pxToEm($grid-gutter-default, $font-size-base)});
+
+						// Renders if optional 'large' gutter value added
+						@if $grid-gutter-large {
+							width: calc((100% / 4 * 3) - #{pxToEm($grid-gutter-large, $font-size-base)});
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Latest grid solution (Uses 'Grid CSS' ie. display: grid)
+	// =================================================================================================================
+	// * Feature query, '@supports (display: grid)', to make sure that only browsers supporting the new 'CSS Grid' properties read the code below.
+	// * This is to progressively enhance the grid layout method / technology if the browser supports it.
+	// * The fallback 'flexbox' rules will eventually be removed once confident user base is on browsers supporting CSS Grid.
+	@supports (display: grid) {
+		.grid {
+			display: grid;
+			grid-template-columns: repeat($grid-columns, [col] 1fr); // Setting the amount of columns
+			margin: 0;
+
+				@include break-point-min($bp-m) {
+					grid-column-gap: pxToEm($grid-gutter-default, $font-size-base);
+				}
+
+			& > .grid-panel {
+				grid-column: col / span $grid-columns;
+				width: auto !important;
+				margin: 0;
+			}
+
+			// 50-50 split
+			&.grid-halves {
+				@include break-point-min($bp-m) {
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						grid-column-gap: pxToEm($grid-gutter-medium, $font-size-base);
+					}
+
+					& > .grid-panel {
+						grid-column: auto / span ($grid-columns / 2);
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						grid-column-gap: pxToEm($grid-gutter-large, $font-size-base);
+					}
+				}
+			}
+
+			// Thirds split (medium screen size +)
+			&.grid-thirds {
+
+				@include break-point-min($bp-m) {
+
+					// Renders if optional 'medium' gutter value added
+					@if $grid-gutter-medium {
+						grid-column-gap: pxToEm($grid-gutter-medium, $font-size-base);
+					}
+
+					& > .grid-panel {
+						grid-column: auto / span ($grid-columns / 3);
+					}
+
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						grid-column-gap: pxToEm($grid-gutter-large, $font-size-base);
+					}
+				}
+			}
+
+			// 50-50 split (medium screen size +)
+			// then...
+			// Thirds split (large screen size +)
+			&.grid-halves-thirds {
+
+				// Renders if optional 'medium' gutter value added
+				@if $grid-gutter-medium {
+					@include break-point-min($bp-m) {
+						grid-column-gap: pxToEm($grid-gutter-medium, $font-size-base);
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						grid-column-gap: pxToEm($grid-gutter-large, $font-size-base);
+					}
+				}
+
+				& > .grid-panel {
+					@include break-point-min($bp-m) {
+						grid-column: auto / span ($grid-columns / 2);
+					}
+					@include break-point-min($bp-l) {
+						grid-column: auto / span ($grid-columns / 3);
+					}
+				}
+			}
+
+			// 50-50 split (medium screen size +)
+			// then...
+			// Quarters split (large screen size +)
+			&.grid-quarters {
+
+				// Renders if optional 'medium' gutter value added
+				@if $grid-gutter-medium {
+					@include break-point-min($bp-m) {
+						grid-column-gap: pxToEm($grid-gutter-medium, $font-size-base);
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						grid-column-gap: pxToEm($grid-gutter-large, $font-size-base);
+					}
+				}
+
+				& > .grid-panel {
+					@include break-point-min($bp-m) {
+						grid-column: auto / span ($grid-columns / 2);
+					}
+					@include break-point-min($bp-l) {
+						grid-column: auto / span ($grid-columns / 4);
+					}
+				}
+			}
+
+			// Two-thirds / One-third split (medium screen size +)
+			// then...
+			// Three quarter / One quarter split (large screen size +)
+			&.grid-wideNarrow {
+
+				// Renders if optional 'medium' gutter value added
+				@if $grid-gutter-medium {
+					@include break-point-min($bp-m) {
+						grid-column-gap: pxToEm($grid-gutter-medium, $font-size-base);
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						grid-column-gap: pxToEm($grid-gutter-large, $font-size-base);
+					}
+				}
+
+				& > .grid-panel {
+					@include break-point-min($bp-m) {
+						grid-column: auto / span ($grid-columns / 3 * 2); // 'Two'-thirds
+					}
+					@include break-point-min($bp-l) {
+						grid-column: auto / span ($grid-columns / 4 * 3); // 'Three'-quarters
+					}
+
+					&:nth-child(2n) {
+						@include break-point-min($bp-m) {
+							grid-column: auto / span ($grid-columns / 3); // 'One'-third
+						}
+						@include break-point-min($bp-l) {
+							grid-column: auto / span ($grid-columns / 4); // 'One'-quarter
+						}
+					}
+				}
+			}
+
+			// One-third / Two-thirds split  (medium screen size +)
+			// then...
+			// One quarter / Three quarter split (large screen size +)
+			&.grid-narrowWide {
+
+				// Renders if optional 'medium' gutter value added
+				@if $grid-gutter-medium {
+					@include break-point-min($bp-m) {
+						grid-column-gap: pxToEm($grid-gutter-medium, $font-size-base);
+					}
+				}
+
+				// Renders if optional 'large' gutter value added
+				@if $grid-gutter-large {
+					@include break-point-min($bp-l) {
+						grid-column-gap: pxToEm($grid-gutter-large, $font-size-base);
+					}
+				}
+
+				& > .grid-panel {
+					@include break-point-min($bp-m) {
+						grid-column: auto / span ($grid-columns / 3); // 'One'-third
+					}
+					@include break-point-min($bp-l) {
+						grid-column: auto / span ($grid-columns / 4); // 'One'-quarter
+					}
+
+					&:nth-child(2n) {
+						@include break-point-min($bp-m) {
+							grid-column: auto / span ($grid-columns / 3 * 2); // 'Two'-thirds
+						}
+						@include break-point-min($bp-l) {
+							grid-column: auto / span ($grid-columns / 4 * 3); // 'Three'-quarters
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Grid implementation: START*/
+@include grid-setup(
+	$grid-column-count, 	// Number of columns (NOTE: Needs to be increments of '12' eg. 12, 24 etc.)
+	30px, 					// Default grid gutter width
+	40px, 					// Grid gutter size on 'medium' sized screens - (optional value)
+	50px 					// Grid gutter size on 'large' sized screens - (optional value)
+);
+/* Grid implementation: END*/
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+// *NOTE: Only add the 'grid-overlay' wrapper and class if you need to demonstrate (visually) the columns in the pattern library
+.grid-overlay {
+	& > .grid {
+		& > .grid-panel {
+			background-color: $black;
+			margin-bottom: pxToEm(30px, $font-size-base) !important;
+
+			& > * {
+				color: $white !important;
+			}
+
+			&:nth-child(odd) {
+				background-color: $grey;
+			}
+		}
+
+		.textBlock {
+			padding: pxToEm(15px, $font-size-base);
+
+				@include break-point-min(768px) {
+					padding: pxToEm(20px, $font-size-base);
+				}
+		}
+	}
+}
+///////////////////////////////////////////

@@ -1,0 +1,52 @@
+# You can use any Docker image from Docker Hub or your own container registry
+# Registry for your build environment.
+image: samueldebruyn/debian-git
+
+pipelines:
+    # default:
+    #   - step:
+    #       script:
+    #         - echo "This script runs on all branches that don't have any specific pipeline assigned in 'branches'."
+
+    # Pipelines that are triggered manually
+    custom:
+      deployment-to-prod: # "Production" environment
+        - step:
+            script:
+              - echo "Deploying, using a manual trigger, to Production is done with a manual triggers"
+              - echo "Pipeline Init"
+              - apt-get update
+              - apt-get -qq install git-ftp
+              - echo "'_$(git status -uno --porcelain | wc -l)_'"
+              - git status -uno --porcelain
+              - echo "Initiating Push site:Source."
+              - git config git-ftp.syncroot dist/
+              - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp.server110.co.uk/public_html/ # Use "init" for initial and then "push" from then on
+
+      deployment-to-beta: # "BETA" environment
+        - step:
+            script:
+              - echo "Deploying, using a manual trigger, to BETA environment for now."
+              - echo "Pipeline Init"
+              - apt-get update
+              - apt-get -qq install git-ftp
+              - echo "'_$(git status -uno --porcelain | wc -l)_'"
+              - git status -uno --porcelain
+              - echo "Initiating Push site:Source."
+              - git config git-ftp.syncroot dist/
+              - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp.server110.co.uk/public_html/beta/ # Use "init" for initial and then "push" from then on
+
+    # Pipelines that are triggered automatically
+    # branches:
+    #     beta: # "BETA" environment
+    #       - step:
+    #           script:
+    #             - echo "Pipeline BETA branch Init"
+    #             - echo "This script runs only on commits to branches with names that match the 'beta' pattern."
+    #             - apt-get update
+    #             - apt-get -qq install git-ftp
+    #             - echo "'_$(git status -uno --porcelain | wc -l)_'"
+    #             - git status -uno --porcelain
+    #             - echo "Initiating Push site:Source."
+    #             - git config git-ftp.syncroot build/
+    #             - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp.analog-lab.co.uk/public/beta/ # Use "init" for initial and then "push" from then on

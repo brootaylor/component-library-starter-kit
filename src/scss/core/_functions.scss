@@ -1,0 +1,102 @@
+
+/* ==========================================================================
+   Various Functions (Global).
+   ========================================================================== */
+
+
+/*
+
+	Functions are used to perform calculations. A Sass function does not output any CSS. Instead, it returns a value that can be used in the CSS. This is useful for calculations that will be made throughout the site.
+
+	For example, functions are useful for calculating the percentage width of a given element:
+
+*/
+
+
+
+/**
+ * Convert px to em
+ *
+ * @param $elFontSize - the element font size in pixel e.g. you want to set margin on your text,
+ * and font size on your text is equivalent to 14px, then your context is 14px.
+ *
+ * @param $values - the values in pixel you want to convert.
+ * You can pass in an array of values. Each value separated by space.
+ *
+ * e.g. margin: pxToEm(16px 20px 20px 16px, 16px);
+ *
+ */
+
+@function pxToEm ($values, $elFontSize: $baseFontSize) {
+  $list: ();
+
+  @each $value in $values {
+    @if ($value == 0 or $value == auto) {
+      $list: append($list, $value);
+    } @else {
+      $emValue: ($value/$elFontSize)+em;
+      $list: append($list, $emValue);
+    }
+  }
+  @return $list;
+}
+
+
+// Z-index
+// ====================================================
+// It's easy to loose track of z-index values when working in several different files,
+// ...so this function is to store them in one place for easy editing/recording.
+
+@function z($name) {
+  @if index($z-indexes, $name) {
+      @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+  } @else {
+      @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+      @return null;
+  }
+}
+
+// Order / weighting of your indexing
+// ===================================
+// * Highest to lowest (top to bottom)
+$z-indexes: (
+
+  // Site Header...
+  "site-head-component", // [3]
+
+  // Featured banner content
+  // =======================
+  // Text....
+  "featured-banner-component-text", // [2]
+  // Image....
+  "featured-banner-component-image" // [1]
+
+);
+
+
+
+// Implementation
+// =====================================================
+// * Wherever you're wanting to use a z-index value, name it the same as your class and add to this partial, like below.
+
+// For example...
+
+// Masthead
+// ==================
+.siteHeader {
+    z-index: z('site-head-component');
+}
+
+// Featured banner
+// ==================
+.feature {
+  .feature-img {
+    z-index: -#{z('featured-banner-component-image')}; // '-' value added in this instance
+  }
+
+  .featureContent {
+    z-index: z('featured-banner-component-text');
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////

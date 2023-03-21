@@ -1,0 +1,43 @@
+/* ==========================================================================
+	 Video (Global).
+	 ========================================================================== */
+
+
+////////////////////////
+// VIDEO
+////////////////////////
+
+.video {
+	background-color: $brand-graphite;
+}
+
+.video-inner {
+	@include responsive-ratio(16,9,true); // 16:9
+	position: relative;
+
+		& > iframe,
+		& > video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+		}
+}
+
+// 4:3 ratio
+.aspect-ratio__4-3 {
+	.video-inner {
+		@include responsive-ratio(4,3,true);
+	}
+}
+
+// 21:9 ratio
+.aspect-ratio__21-9 {
+	.video-inner {
+		@include responsive-ratio(21,9,true);
+	}
+}
+
+////////////////////////////////////////////////////////////////

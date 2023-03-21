@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Social assets (Global). eg. Twitter, Facebook etc.
+   ========================================================================== */
+
+.social {
+  font-size: 1.625rem;
+  display: inline-block;
+
+  li {
+    display: inline-block;
+    margin-right: pxToEm(3px, $font-size-base);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  i,
+  a {
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: lighten($brand-graphite, 10%);
+    border-bottom: none;
+  }
+
+  .icon-facebook {
+    color: #385184;
+
+    &:hover,
+    &:focus {
+      color: darken(#385184, 10%);
+    }
+  }
+
+  .icon-twitter {
+    color: #369ecc;
+
+    &:hover,
+    &:focus {
+      color: darken(#369ecc, 10%);
+    }
+  }
+
+  .icon-linkedin {
+    color: #1a71a2;
+
+    &:hover,
+    &:focus {
+      color: darken(#1a71a2, 10%);
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////

@@ -1,0 +1,15 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+	"context": {
+		"logoImageUrl": "/img/common/logo-fm.svg"
+	},
+	"variants": [
+		{
+			"name": "SVG inline",
+            "context": {
+				"inlineSvg": true
+            }
+		}
+	]
+}

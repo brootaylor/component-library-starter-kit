@@ -1,0 +1,24 @@
+<table>
+	<caption class="visuallyhidden">{{ tableHeadingCaption }}</caption>
+	{{#if hasTableHeaderColumns}}
+		<thead>
+			<tr>
+				{{!-- #each table column header... --}}
+				{{#each tableColumnHeading }}
+					<th scope="col">{{ this }}</th>
+				{{/each}}
+			</tr>
+		</thead>
+	{{/if}}
+	<tbody>
+		{{!-- #each row... --}}
+		{{#each tableRow}}
+			<tr>
+				{{!-- #each row column field... --}}
+				{{#each tableRowFields}}
+					<td>{{ this }}</td>
+				{{/each}}
+			</tr>
+		{{/each}}
+	</tbody>
+</table>

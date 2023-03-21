@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Messages (Global).
+   ========================================================================== */
+
+[class^="message_"],
+[class*=" message_"] {
+
+	p {
+		font-size: 1.125rem;
+		padding: pxToEm(15px, $font-size-base);
+		margin: 0;
+		border-radius: 5px;
+	}
+}
+
+// Warning message...
+.message_warn {
+	p {
+		background-color: darken($red, 5%);
+		color: $white;
+	}
+	a {
+		white-space: nowrap;
+	}
+}
+/////////////////////////////////////

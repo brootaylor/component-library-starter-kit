@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Tables (Global).
+   ========================================================================== */
+
+   th,
+   td {
+	   vertical-align: text-top;
+	   text-align: left;
+	   padding: pxToEm(10px, $font-size-base);
+	   transition: padding 0.2s;
+   }
+
+   table {
+	   width: 100%;
+	   border-collapse: collapse;
+	   margin-bottom: pxToEm(30px, $font-size-base);
+
+	   th,
+	   td {
+		   @include fontSize(12px);
+		   background-color: transparent;
+		   transition:
+			   background-color 0.2s,
+			   font-size 0.2s;
+
+			   @include break-point-min($bp-m) {
+				   @include fontSize(14px);
+				   padding: pxToEm(15px, $font-size-base);
+			   }
+
+			   @include break-point-min($bp-l) {
+				   @include fontSize(16px);
+			   }
+
+		   // Ensures table cell and its children are the specified font-size and don't assign any default padding & margin values...
+		   & > * {
+			   font-size: inherit;
+			   padding: 0;
+			   margin: 0;
+		   }
+	   }
+
+	   thead {
+		   th {
+			   text-transform: uppercase;
+			   color: $brand-indigo;
+			   font-weight: 700;
+			   padding: pxToEm(5px 15px, $font-size-base);
+
+				   @include break-point-min($bp-l) {
+					   @include fontSize(14px);
+				   }
+
+			   &:not(:first-child) {
+				   text-align: right;
+			   }
+		   }
+	   }
+
+	   tbody {
+		   tr {
+			   &:nth-child(odd) {
+				   th,
+				   td {
+					   background-color: rgba($brand-lightGrey, 0.5);
+				   }
+			   }
+
+			   &:last-child {
+				   &:nth-child(even) {
+					   th,
+					   td {
+						   border-bottom: 1px solid rgba($brand-lightGrey, 1);
+					   }
+				   }
+			   }
+
+			   &:hover {
+				   th,
+				   td {
+					   background-color: rgba($brand-lightGrey, 1);
+				   }
+			   }
+		   }
+
+		   td:not(:first-child) {
+			   text-align: right;
+			   white-space: nowrap;
+		   }
+
+		   th,
+		   td {
+			   font-family: $font-family-regular;
+			   font-weight: normal;
+		   }
+	   }
+
+   }
+
+   /////////////////////////////////////

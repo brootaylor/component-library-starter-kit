@@ -1,0 +1,17 @@
+{
+	"status": "wip",
+	"preview": "@preview",
+	"context": {
+		"pageTitle": "Error page title",
+		"pageText": "Error page paragraph text."
+	},
+	"variants": [
+		{
+			"name": "404 page",
+			"context": {
+				"pageTitle": "Oops, looks like that page doesn't exist",
+				"pageText": "Unfortunately the page you were looking for doesn't exist. That, or you just ended up here by mistake."
+			}
+		}
+	]
+}

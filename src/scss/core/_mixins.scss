@@ -1,0 +1,438 @@
+/* ==========================================================================
+   Various Mixins (Global).
+   ========================================================================== */
+
+// Typography Modular Scale
+// ====================================================
+// * To help achieve a modular scale (for fonts).
+// * See 'variables' partial for option settings
+
+
+// Scale map values - (smallest to largest)...
+$type-settings: (
+	-3: (
+		font-size: (($font-size-base / $type-scale) / $type-scale) / $type-scale
+	),
+	-2: (
+		font-size: ($font-size-base / $type-scale) / $type-scale
+	),
+	-1: (
+		font-size: $font-size-base / $type-scale
+	),
+	0: (
+		font-size: $font-size-base
+	),
+	1: (
+		font-size: $font-size-base * ($type-scale)
+	),
+	2: (
+		font-size: ($font-size-base * $type-scale) * $type-scale
+	),
+	3: (
+		font-size: (($font-size-base * $type-scale) * $type-scale) * $type-scale
+	),
+	4: (
+		font-size: ((($font-size-base * $type-scale) * $type-scale) * $type-scale) * $type-scale
+	)
+);
+
+// Get the relevant mapped values...
+@function type-scale($level) {
+	@return map-get(
+		map-get($type-settings, $level), 'font-size');
+}
+
+// Calculate and convert to REM value...
+@mixin type-setting($level, $extra-size: 0) {
+	// If needing to bump font level up by an amount...
+	@if ($extra-size > 0) {
+		font-size: (type-scale($level) + $extra-size) / $font-size-base + rem;
+	} @else {
+		font-size: type-scale($level) / $font-size-base + rem;
+	}
+}
+
+// Implementation example...
+.font-scale {
+	@include type-setting(3);
+}
+
+
+// Font-size 'px' to 'rem' converter
+// ====================================================
+@function calculateRem($size) {
+	$remSize: $size / $font-size-base;
+	@return #{$remSize}rem;
+}
+
+// Mixin to use in your code...
+@mixin fontSize($size) {
+	font-size: calculateRem($size);
+}
+
+
+// Font colour opacity
+// ====================================================
+@mixin font-opacity($color, $opacity: 0.3) {
+	color: $color; // Fallback
+	color: rgba($color, $opacity);
+}
+
+// Implementation example...
+.font-opacity {
+	@include font-opacity(#fff, 0.5);
+}
+
+
+// Psuedo
+// ====================================================
+// * Add this to the ':before' and / or ':after'
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+
+// Silent class generator
+// ====================================================
+// * Generates a selector/s and/or solid class (for use in markup) and a silent class (for use with
+// * `@extend`) in one go.
+@mixin silent-class($class-name, $selector: false) {
+	// Checks first to see if a standard selector/s is being used
+	@if $selector {
+		#{$selector},
+		.#{$class-name},
+		%#{$class-name} {
+			@content;
+		}
+	} @else {
+		.#{$class-name},
+		%#{$class-name} {
+			@content;
+		}
+	}
+}
+
+
+// Centre content (not using Flex)
+// ====================================================
+// * Needs parent to have 'position: relative'
+@mixin centre-content($y-pos: top, $y-pos-val: 50%) {
+  position: absolute;
+  left: 50%;
+  margin-right: -50%; // The 'margin-right: -50%' is needed to compensate the 'left: 50%'. The 'left' rule reduces the available width for the element by 50%.
+
+  @if ($y-pos != bottom and $y-pos-val == 50%) {
+	top: 50%;
+	transform: translate(-50%, -50%); // X and Y axis
+  } @else {
+	  #{$y-pos}: $y-pos-val;
+	  transform: translateX(-50%);
+  }
+}
+
+
+// Centre content (using Flex)
+// ====================================================
+@mixin centre-content-flex($x-pos: center, $y-pos: center) {
+	display: flex;
+	justify-content: $x-pos;
+	align-items: $y-pos;
+}
+
+
+// Responsive ratio
+// ====================================================
+// * Use this for creating scalable elements (ie. images / video / background images) that maintain a ratio.
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+	$padding: unquote( ( $y / $x ) * 100 + '%' ); // Works out percentage after entering say '(16,9)'
+
+	// Checks to see if 'psuedo' argument is 'true'
+	@if $pseudo {
+		&:before {
+			@include pseudo($pos: relative);
+			width: 100%;
+			padding-top: $padding;
+		}
+	} @else {
+		padding-top: $padding;
+	}
+}
+
+
+// Background-image (Custom values)
+// ====================================================
+// * Use this for creating custom background image values
+@mixin background-image($width: 100%, $height: auto, $bg-position: center center, $bg-size: cover) {
+	width: $width;
+	height: $height;
+	background-position: $bg-position;
+	background-size: $bg-size;
+	background-repeat: no-repeat;
+}
+
+
+// Background colour transparency
+// ====================================================
+@mixin background-colour-opacity($color, $opacity: 0.3) {
+	background-color: rgba($color, $opacity);
+}
+
+// Implementation example...
+.background-opacity {
+	@include background-colour-opacity(#fff, 0.5);
+}
+
+
+// Truncate
+// ====================================================
+// * You only have to specify your boundary with a 'max-width' value eg. '350px'
+@mixin truncate($truncation-boundary) {
+	max-width: $truncation-boundary;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+// Content margins
+// ====================================================
+// * Handles the first and last child's margin values (eg. a 'ul' component)
+// * Can pass in a specific selector (eg. 'li')
+@mixin content-margins($selector: '> *', $last-child: false) {
+	@if not $selector {
+		$selector: '&';
+	}
+
+	#{unquote($selector)} {
+		&:first-child { margin-top: 0; }
+
+		// Checks to see if 'last-child' argument is 'true'
+		@if $last-child {
+			&:last-child { margin-bottom: 0; }
+		}
+	}
+}
+
+
+
+/////////////////////
+// 'Hamburger' icons
+/////////////////////
+
+/**
+ * Burger parts
+ *
+ * (---) top    -> &:before
+ * [---] middle -> &
+ * (---) bottom -> &:after
+
+// =====================================================================================
+// Huge thank you to Joren Van Hee, http://joren.co, for creating and sharing this code
+// =====================================================================================
+
+ */
+
+
+/**
+ * Burger
+ */
+
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+	$burger-height: $height !global;
+	$burger-gutter: $gutter !global;
+
+	position: relative;
+	margin-top: $height + $gutter;
+	margin-bottom: $height + $gutter;
+
+	&, &:before, &:after {
+		display: block;
+		width: $width;
+		height: $height;
+		background-color: $color;
+		@if $border-radius != 0 {
+			border-radius: $border-radius;
+		}
+
+		transition-property: background-color, transform;
+		transition-duration: $transition-duration;
+	}
+
+	&:before, &:after {
+		position: absolute;
+		content: "";
+	}
+
+	&:before {
+		top: -($height + $gutter);
+	}
+
+	&:after {
+		top: $height + $gutter;
+	}
+}
+
+
+/**
+ * Select parts of the burger
+ */
+
+@mixin burger-parts {
+	&, &:before, &:after {
+		@content;
+	}
+}
+
+@mixin burger-top {
+	&:before {
+		@content;
+	}
+}
+
+@mixin burger-middle {
+	& {
+		@content;
+	}
+}
+
+@mixin burger-bottom {
+	&:after {
+		@content;
+	}
+}
+
+
+/**
+ * Burger animations
+ */
+
+@mixin burger-to-cross {
+	& {
+		background-color: transparent !important;
+	}
+	&:before {
+		transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+	}
+	&:after {
+		transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+	}
+}
+
+// Generic values. Site-specific values are in the _navigation partial
+.menu-button--icon {
+  @include burger(35px, 3px, 5px, #444);
+}
+
+.menu-button.is-active .menu-button--icon {
+  @include burger-to-cross;
+}
+
+// ===================================================================================================
+
+
+//////////////////////////
+// Media queries (Global)
+//////////////////////////
+
+// Resource => http://sassbreak.com/flexible-media-query-mixins/
+// >> The reason for going with ems, (slight edge on rems cause of Safari support issues), rather than pixels for media queries => http://zellwk.com/blog/media-query-units/
+
+
+// Global breakpoint variables (customisable)
+// ==========================================
+$bp-xl: 1200px;
+$bp-l: 1024px;
+$bp-m: 768px;
+$bp-s: 640px;
+$bp-xs: 480px;
+
+// Min-width breakpoint
+@mixin break-point-min($bp, $min-max: min-width) {
+  $em: $bp/$font-size-base;
+  @media(#{$min-max}: #{$em}em) { @content; }
+}
+// Max-width breakkpoint
+@mixin break-point-max($bp, $min-max: max-width) {
+  $em: $bp/$font-size-base;
+  @media(#{$min-max}: #{$em}em) { @content; }
+}
+
+// Implementation Examples - (converts to em value):
+// ================================================
+
+// Using a min-width global breakpoint variable
+// .element {
+//   @include break-point-min($bp-xl) {
+//     /* Blah blah... */
+//   }
+// }
+
+// // Using a max-width global breakpoint variable
+// .elementB {
+//   @include break-point-max($bp-l) {
+//     /* Blah blah... */
+//   }
+// }
+
+// // Using a specific value
+// .elementC {
+//   @include break-point-min(560px) {
+//     /* Blah blah... */
+//   }
+// }
+
+// ===================================================================================================
+
+///////////////
+// Opacity
+///////////////
+
+@mixin opacity($opacity) {
+ opacity: $opacity;
+ filter: alpha(opacity=$opacity*100);
+}
+
+// Implementation Example:
+// =======================
+// .thumbnail {
+//  width: 48px;
+//  height: 48px;
+//  @include opacity(.5);
+// }
+
+// ===================================================================================================
+
+/////////////////
+// Retina images
+/////////////////
+
+@mixin background-image-retina($file, $type, $width, $height) {
+ background-image: url($file + '.' + $type);
+ @media only screen and (-webkit-min-device-pixel-ratio: 2),
+ only screen and (-moz-min-device-pixel-ratio: 2),
+ only screen and (-o-min-device-pixel-ratio: 2/1),
+ only screen and (min-device-pixel-ratio: 2),
+ only screen and (min-resolution: 192dpi),
+ only screen and (min-resolution: 2dppx){
+  & {
+   background-image: url($file + '@2x.' + $type);
+   -webkit-background-size: $width $height;
+   -moz-background-size: $width $height;
+   -o-background-size: $width $height;
+   background-size: $width $height;
+  }
+ }
+}
+
+// Implementation Example:
+// =======================
+// .img {
+//  width: 760px;
+//  height: 400px;
+//  @include background-image-retina(monkey, png, 760px, 400px);
+// }
+
+// ===================================================================================================
+

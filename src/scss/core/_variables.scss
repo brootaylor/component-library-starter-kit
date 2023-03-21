@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Variables (Global).
+   ========================================================================== */
+
+
+/*
+
+	////////////////////////////////
+	These are global variables
+	////////////////////////////////
+
+	Note: ==>> Module-specific variables, mixins, functions and placeholders should be kept within the correct module’s partial file:
+
+*/
+
+
+// Colour palette
+// ==============
+
+// Common colours
+$white: #fff;
+$black: #000;
+$grey: #ccc;
+$blue: #0000ff;
+$green: #00ff00;
+$orange: #ffa500;
+$yellow: #ffff00;
+$red: #ff0000;
+
+/////////////////////////////////////////////////////
+
+// Brand-specific colours (Primary)
+$brand-blue: #002f87;
+$brand-azure: #007eff;
+$brand-graphite: #3f3f3f;
+$brand-grey: #a5a5a5;
+$brand-lightGrey: #f5f5f5;
+
+// Brand-specific colours (Secondary)
+$brand-indigo: #460082;
+$brand-midnight: #191970;
+$brand-aqua: #76f9ef;
+$brand-rose: #c11446;
+$brand-cranberry: #931850;
+$brand-steel: #5c8cab;
+$brand-prussian: #003153;
+
+/////////////////////////////////////////////////////
+
+// Links
+// ==============
+$link-primary: $brand-azure;
+$link-secondary: $brand-azure;
+$link-tertiary: $brand-graphite;
+
+/////////////////////////////////////////////////////
+
+// Messages
+// ==============
+$message-alert: $brand-rose;
+$message-error: $brand-rose;
+$message-warning: $orange;
+$message-info: $yellow;
+$message-success: $green;
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+/* FONTS VARIABLE CONFIG
+============================================= */
+
+// Base font size
+$font-size-base: 16px;
+
+// Base font colour
+$font-color-base: $brand-graphite;
+
+// Font families
+// ======================
+
+// Custom fonts...
+$font-family-custom-light: "NHaasGroteskDSStd-35XLt", Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-family-custom-medium: "NHaasGroteskTXStd-65Md", Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-family-custom-bold: "NHaasGroteskTXStd-75Bd", Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+// 'Regular' fonts...
+$font-family-regular: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+
+// Scale values / options
+// -----------------------
+// * Reference ==> http://type-scale.com/
+
+$perfect-fourth: 1.333; // 'Perfect Fourth'
+$augmented-fourth: 1.414; // 'Augmented Fourth'
+$perfect-fifth: 1.500; // 'Perfect Fifth'
+$golden-ratio: 1.618; // 'Golden Ratio'
+
+// Chosen visual type scale
+// ------------------------
+$type-scale: $perfect-fourth;
+
+
+/* GLOBAL SPACING / LAYOUT VALUES
+============================================= */
+
+// Website width, background-color, grid column count
+// -----------------------------------------------------
+
+$grid-column-count: 12; // Number of columns (NOTE: Needs to be increments of '12' eg. 12, 24 etc.)
+$website-width: 1024px; // This is the 'constrained' max-width of the website
+$website-background-color: $white;
+

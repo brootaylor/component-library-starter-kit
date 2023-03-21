@@ -1,0 +1,105 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+	"context": {
+		"tableHeadingCaption": "Table caption / title for this table of contents",
+		"hasTableHeaderColumns": true,
+		"tableColumnHeading": [
+			"Something",
+			"Date",
+			"Value"
+		],
+		"tableRow": [
+			{
+				"tableRowFields":  [
+					"Alumina Index US $ per tonne FOB Australia",
+					"31 Jul",
+					"$19,248.18"
+				]
+			}
+		]
+	},
+	"variants": [
+		{
+			"name": "Single column table",
+			"context": {
+				"hasTableHeaderColumns": false,
+				"tableRow": [
+					{
+						"tableRowFields":  [
+							"Aluminium 6063 & 6060 extrusion billet, cif Brazilian main ports, spot (premium over LME cash), $/tonne"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Single column and multiple rows table",
+			"context": {
+				"hasTableHeaderColumns": false,
+				"tableRow": [
+					{
+						"tableRowFields":  [
+							"Aluminium 6063 & 6060 extrusion billet, cif Brazilian main ports, spot (premium over LME cash), $/tonne"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Aluminium 6063 extrusion billet, in-warehouse Rotterdam duty-paid, spot $ per tonne"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Aluminium billet,  delivered duty-paid Italy (Brescia area) over LME 60-day pay $/gross tonne"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Aluminium billet, CIF  Thailand duty-unpaid over LME cash pay $/gross tonne"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Aluminium billet, CIF Turkey (Marmara region) duty-paid,  over LME cash pay $/gross tonne"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Multiple columns and rows table",
+			"context": {
+				"tableRow": [
+					{
+						"tableRowFields":  [
+							"Alumina Index US $ per tonne FOB Australia",
+							"31 Jul",
+							"$19,248.18"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Alumina Index US $ per tonne FOB Australia",
+							"31 Jul",
+							"$19,248.18"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Alumina Index US $ per tonne FOB Australia",
+							"31 Jul",
+							"$19,248.18"
+						]
+					},
+					{
+						"tableRowFields":  [
+							"Alumina Index US $ per tonne FOB Australia",
+							"31 Jul",
+							"$19,248.18"
+						]
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,110 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+    "context": {
+		"modifier": "primary",
+		"label": "Default button"
+	},
+    "variants": [
+        {
+			"name": "Primary",
+            "context": {
+				"modifier": "primary",
+				"label": "Primary button"
+            }
+		},
+		{
+			"name": "Primary large",
+            "context": {
+				"largeButton": true,
+				"modifier": "primary",
+				"label": "Primary button large"
+            }
+		},
+		{
+			"name": "Primary Disabled",
+            "context": {
+				"modifier": "primary disabled",
+				"label": "Primary button"
+            }
+		},
+		{
+			"name": "Primary Large Disabled",
+            "context": {
+				"largeButton": true,
+				"modifier": "primary disabled",
+				"label": "Primary button large"
+            }
+		},
+		{
+			"name": "Secondary",
+            "context": {
+				"secondary_button_default": true,
+				"modifier": "secondary",
+				"label": "Secondary button"
+            }
+		},
+		{
+			"name": "Secondary large",
+            "context": {
+				"largeButton": true,
+				"modifier": "secondary",
+				"label": "Secondary button large"
+            }
+		},
+		{
+			"name": "Secondary Disabled",
+            "context": {
+				"secondary_button_default": true,
+				"modifier": "secondary disabled",
+				"label": "Secondary button"
+            }
+		},
+		{
+			"name": "Secondary Large Disabled",
+            "context": {
+				"largeButton": true,
+				"modifier": "secondary disabled",
+				"label": "Secondary button large"
+            }
+		},
+		{
+			"name": "Button Group",
+			"context": {
+				"isButtonGroup": true,
+				"button_type": [
+					{
+						"modifier": "primary",
+						"label": "Take a trial"
+					},
+					{
+						"secondary_button_default": true,
+						"modifier": "secondary",
+						"label": "View our solutions"
+					}
+				]
+			}
+		},
+		{
+			"name": "Button Large Group",
+			"context": {
+				"isButtonGroup": true,
+				"largeButtonGroup": true,
+				"button_type": [
+					{
+						"largeButton": true,
+						"modifier": "primary",
+						"label": "Take a trial"
+					},
+					{
+						"largeButton": true,
+						"modifier": "secondary",
+						"label": "View our solutions"
+					}
+				]
+			}
+		}
+	]
+}
+
+

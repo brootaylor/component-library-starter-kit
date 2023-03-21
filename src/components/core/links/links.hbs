@@ -1,0 +1,14 @@
+{{#if linkStandalone}}
+	{{!-- Standalone 'Text' link / button --}}
+	<a href="" class="{{ link_class }}">{{ link_label }}</a>
+{{else if linkList}}
+	{{!-- List of links --}}
+	<ul class="{{ link_class }}">
+		{{#each link_item}}
+			<li><a href="">{{ link_label }}</a></li>
+		{{/each}}
+	</ul>
+{{else}}
+	{{!-- Default link style - typically in a sentence  --}}
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="">{{ link_label }}</a> ut labore et dolore magna aliqua.</p>
+{{/if}}

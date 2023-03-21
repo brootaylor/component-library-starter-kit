@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Featured content eg. Hero image and text
+   ========================================================================== */
+
+.feature {
+	position: relative;
+	overflow: hidden;
+	min-height: pxToEm(235px, $font-size-base);
+	border-bottom: 1px solid rgba($brand-graphite, 0.2);
+	margin-bottom: pxToEm(40px, $font-size-base);
+	transition:
+		min-height 0.3s,
+		margin-bottom 0.3s;
+
+		@include break-point-min(768px) {
+			min-height: pxToEm(480px, $font-size-base);
+			border-bottom: 0;
+		}
+
+		@include break-point-min(1024px) {
+			min-height: pxToEm(580px, $font-size-base);
+			margin-bottom: pxToEm(60px, $font-size-base);
+		}
+
+	.feature-img {
+		position: static;
+		height: 235px;
+		transition: height 0.3s;
+
+			@include break-point-min(768px) {
+				position: absolute;
+				height: 100%;
+			}
+	}
+
+	// Making sure the wrap element fills the height of the parent container
+	.wrap {
+		height: 100%;
+		max-width: pxToEm(1250px, $font-size-base);
+	}
+}
+
+.featureContent {
+	width: 100%;
+	margin: pxToEm(30px 0 40px 0, $font-size-base);
+	transition: margin 0.3s;
+
+		@include break-point-min(768px) {
+			max-width: pxToEm(480px, $font-size-base);
+			padding: pxToEm(20px, $font-size-base);
+			margin-bottom: pxToEm(30px, $font-size-base);
+			background-color: $white;
+			box-shadow: 0px 1px 4px -1px rgba($black, 0.3);
+		}
+
+		@include break-point-min(1024px) {
+			padding: pxToEm(40px, $font-size-base);
+			margin: pxToEm(65px 0, $font-size-base);
+		}
+
+	.button {
+		margin-bottom: 0;
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////

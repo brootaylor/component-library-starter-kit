@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Helper class
+   ========================================================================== */
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visuallyhidden,
+.screenreader {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 0.063em;
+    margin: -0.063em;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 0.063em;
+    white-space: nowrap; /* 1 */
+
+        /*
+         * Extends the .visuallyhidden & .screenreader classes to allow the element to be focusable
+         * when navigated to via the keyboard: h5bp.com/p
+         */
+        &.focusable:active,
+        &.focusable:focus {
+            clip: auto;
+            clip-path: none;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto;
+            white-space: inherit;
+        }
+
+        &:focus {
+          background-color: #f1f1f1;
+          border-radius: 3px;
+          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+          clip: auto !important;
+          color: #21759b;
+          display: block;
+          font-size: 14px;
+          font-size: 0.875rem;
+          font-weight: bold;
+          height: auto;
+          left: 5px;
+          line-height: normal;
+          padding: 15px 23px 14px;
+          text-decoration: none;
+          top: 5px;
+          width: auto;
+          z-index: 100000; /* Makes sure it appears above WP toolbar. */
+        }
+}

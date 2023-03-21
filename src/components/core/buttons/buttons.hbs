@@ -1,0 +1,45 @@
+{{#if isButtonGroup}}
+	{{!-- Button group (ie. 2 or more buttons) --}}
+	<ul class="buttonGroup {{#if largeButtonGroup}}buttons-large{{/if}}">
+		{{#each button_type}}
+			<li class="buttonGroup-item">
+				{{#if largeButton}}
+					{{!-- Large button... --}}
+					<a href="" class="button {{ modifier }} large">
+						<span>{{ label }}</span>
+					</a>
+				{{else}}
+					{{!-- Default button... --}}
+					<a href="" class="button {{ modifier }}">
+						<span>
+							{{ label }}
+							{{!-- If secondary button (default)... --}}
+							{{#if secondary_button_default}}
+								<em aria-hidden="true"></em>
+							{{/if}}
+						</span>
+					</a>
+				{{/if}}
+			</li>
+		{{/each}}
+	</ul>
+{{else}}
+	{{!-- Single button type --}}
+	{{#if largeButton}}
+		{{!-- Large button... --}}
+		<a href="" class="button {{ modifier }} large">
+			<span>{{ label }}</span>
+		</a>
+	{{else}}
+		{{!-- Default button... --}}
+		<a href="" class="button {{ modifier }}">
+			<span>
+				{{ label }}
+				{{!-- If secondary button (default)... --}}
+				{{#if secondary_button_default}}
+					<em aria-hidden="true"></em>
+				{{/if}}
+			</span>
+		</a>
+	{{/if}}
+{{/if}}

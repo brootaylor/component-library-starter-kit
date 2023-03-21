@@ -1,0 +1,40 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+    "context": {
+		"link_label": "link in a sentence"
+	},
+    "variants": [
+        {
+			"name": "Standalone link",
+            "context": {
+				"linkStandalone": true,
+				"link_class": "link-standalone",
+				"link_label": "Standalone link text"
+            }
+		},
+		{
+			"name": "List of links",
+            "context": {
+				"linkList": true,
+				"link_class": "link-list",
+				"link_item": [
+					{
+						"link_label": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"link_label": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"link_label": "Lorem ipsum dolor sit amet"
+					},
+					{
+						"link_label": "Lorem ipsum dolor sit amet"
+					}
+				]
+            }
+		}
+    ]
+}
+
+

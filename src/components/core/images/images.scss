@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Image assets (Global).
+   ========================================================================== */
+
+// Image and text combination
+///////////////////////////////
+.imgGroup {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: pxToEm(30px, $font-size-base);
+
+        @include break-point-min(768px) {
+            display: block;
+            margin-bottom: 0;
+		}
+
+	a {
+		border: 0;
+
+		&:hover,
+		&:focus,
+		&:active {
+			border: 0;
+		}
+
+		.imgGroup-visual {
+			@include opacity(1);
+			transition: opacity 0.25s;
+		}
+
+		&:hover {
+			.imgGroup-visual {
+				@include opacity(0.8);
+			}
+		}
+	}
+
+    // Image group visual element
+    .imgGroup-visual {
+        flex: 1 1 35%;
+        max-width: 35%;
+
+            @include break-point-min(768px) {
+                display: block;
+                max-width: pxToEm(250px, $font-size-base);
+                margin: pxToEm(0 auto 20px auto, $font-size-base);
+            }
+    }
+
+    // Image group text element
+    .imgGroup-text {
+        flex: 1 1 65%;
+        max-width: 65%;
+        padding-left: pxToEm(15px, $font-size-base);
+
+            @include break-point-min(768px) {
+                max-width: 100%;
+                padding-left: 0;
+            }
+    }
+
+    // If image group is always stacked
+    &.stacked {
+        display: flex;
+        flex-flow: column wrap;
+
+        .imgGroup-visual,
+        .imgGroup-text {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+
+    }
+}
+
+////////////////////////////////////////////////////////////////

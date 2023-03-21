@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Site Footer
+   ========================================================================== */
+
+.siteFooter {
+	position: relative;
+	background-color: $brand-lightGrey;
+	padding: pxToEm(50px 0, $font-size-base);
+	margin-top: pxToEm(60px, $font-size-base);
+
+		@include break-point-min(1024px) {
+			padding: pxToEm(85px 0, $font-size-base);
+		}
+
+	.grid-panel {
+		&:first-child {
+			order: 3;
+
+				@include break-point-min(768px) {
+					order: 1;
+				}
+		}
+		&:nth-child(2) {
+			order: 2;
+		}
+		&:last-child {
+			order: 1;
+
+				@include break-point-min(768px) {
+					order: 3;
+				}
+		}
+	}
+
+	.logo {
+		display: block;
+		border-bottom: none;
+
+		// Inline SVG
+		svg {
+			width: pxToEm(80px, $font-size-base);
+			height: pxToEm(75px, $font-size-base);
+
+				@include break-point-min(1024px) {
+					width: pxToEm(100px, $font-size-base);
+					height: pxToEm(94px, $font-size-base);
+				}
+		}
+
+		// SVG image file
+		[src*=".svg"] {
+			max-width: pxToEm(80px, $font-size-base);
+
+			@include break-point-min(1024px) {
+				max-width: pxToEm(100px, $font-size-base);
+			}
+		}
+	}
+
+	.siteFooter-group {
+		ul:not(.social) {
+			font-size: 1rem;
+		}
+		.label {
+			font-size: 1rem;
+			padding-right: pxToEm(5px, $font-size-base);;
+		}
+
+		&.contact {
+			padding: pxToEm(50px 0, $font-size-base);
+
+				@include break-point-min(768px) {
+					padding: 0;
+				}
+		}
+	}
+
+	.siteFooter-title {
+		margin-top: 0;
+	}
+
+	.siteFooter-list {
+		@extend %no-list;
+	}
+
+	.siteFooter-listItem {
+		&:not(:last-child) {
+			margin-bottom: pxToEm(10px, $font-size-base);
+		}
+	}
+
+	.siteFooter-signoff {
+		font-size: 1rem;
+		display: block;
+		padding-top: pxToEm(20px, $font-size-base);
+	}
+
+	a {
+		color: $brand-graphite;
+	}
+}

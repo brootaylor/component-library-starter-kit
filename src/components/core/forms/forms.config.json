@@ -1,0 +1,77 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+	"context": {},
+	"variants": [
+		{
+			"name": "Form full",
+			"notes": "This variant renders out all the available form fields in a single form."
+		},
+		{
+			"name": "Form text field",
+			"context": {
+				"formTextField": true
+			}
+		},
+		{
+			"name": "Form number field",
+			"context": {
+				"formNumberField": true
+			}
+		},
+		{
+			"name": "Form email field",
+			"context": {
+				"formEmailField": true
+			}
+		},
+		{
+			"name": "Form telephone field",
+			"context": {
+				"formTelephoneField": true
+			}
+		},
+		{
+			"name": "Form password field",
+			"context": {
+				"formPasswordField": true
+			}
+		},
+		{
+			"name": "Form URL field",
+			"context": {
+				"formUrlField": true
+			}
+		},
+		{
+			"name": "Form search field",
+			"context": {
+				"formSearchField": true
+			}
+		},
+		{
+			"name": "Form textarea field",
+			"context": {
+				"formTextAreaField": true
+			}
+		},
+		{
+			"name": "Form radio buttons",
+			"context": {
+				"formRadioButtons": true
+			}
+		},
+		{
+			"name": "Form checkbox buttons",
+			"context": {
+				"formCheckboxButtons": true
+			}
+		},
+		{
+			"name": "Form select dropdown",
+			"context": {
+				"formSelectDropdown": true
+			}
+		}
+	]
+}

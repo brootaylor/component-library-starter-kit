@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Site Header / Masthead styles (eg. Container for the Logo, strapline & main navigation / menu).
+   ========================================================================== */
+
+.siteHeader {
+	position: relative;
+	width: 100%;
+	padding: pxToEm(15px 0, $font-size-base);
+
+		@include break-point-min(1024px) {
+			padding: pxToEm(30px 0, $font-size-base);
+		}
+
+	.wrap {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.logo {
+		display: block;
+		border-bottom: none;
+
+		// Inline SVG
+		svg {
+			width: pxToEm(80px, $font-size-base);
+			height: pxToEm(75px, $font-size-base);
+		}
+
+		// SVG image file
+		[src*=".svg"] {
+			max-width: pxToEm(80px, $font-size-base);
+		}
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////

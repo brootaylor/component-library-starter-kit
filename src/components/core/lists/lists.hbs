@@ -1,0 +1,22 @@
+{{#if orderedList}}
+	<ol {{#if listClass}} class="{{ listClass }}" {{/if}}>
+{{else}}
+	<ul {{#if listClass}} class="{{ listClass }}" {{/if}}>
+{{/if}}
+	{{#each listItems}}
+		<li>
+			{{#if link_label}}
+				<a href="">{{ link_label }}</a>
+			{{else}}
+				{{ text }}
+			{{/if}}
+			{{#if listItems}}
+				{{> @lists }}
+			{{/if}}
+		</li>
+	{{/each}}
+{{#if orderedList}}
+	</ol>
+{{else}}
+	</ul>
+{{/if}}

@@ -1,0 +1,29 @@
+<section class="media {{ modifier }}">
+	<div class="mediaVisual">
+		{{!-- If primary heading / title needs to render here --}}
+		{{#if visual_hasHeading}}
+			<header class="media-header">
+				<h2 class="media-title">{{ title }}</h2>
+			</header>
+		{{/if}}
+		{{!-- Media visual component renders here --}}
+		{{#if has_video}}
+			{{render "@videos" }}
+		{{else if has_video_3rdParty}}
+			{{render "@videos--third_party" }}
+		{{else}}
+			{{render "@images" }}
+		{{/if}}
+	</div>
+	<div class="mediaContent">
+		{{!-- Default position for heading / title to render --}}
+		{{#unless visual_hasHeading}}
+			<header class="media-header">
+				<h2 class="media-title">{{ title }}</h2>
+			</header>
+		{{/unless}}
+		<p>The correction in equities is nearing an end and the stage is set for a blow-off rally into year-end.</p>
+		<p>The U.S. dollar will bounce before resuming its bear market next year. The yen could weaken against the dollar but hold its own against other currencies.</p>
+		<a href="" class="button primary">Get the full report</a>
+	</div>
+</section>

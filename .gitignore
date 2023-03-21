@@ -1,0 +1,35 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+
+##############
+# Files:
+##############
+
+.sass-cache
+.sass-cache*
+*.css.map
+**/.DS_Store
+.DS_Store
+styles.css.map
+critical.css.map
+**/*.sublime-grunt.cache
+**/tmp-*.html
+_SpecRunner.html
+npm-debug.log
+.vscode
+.code-workspace
+
+
+##############
+# Folders:
+##############
+
+node_modules/
+maps/
+.grunt/
+
+# 'www/' is the folder for static UI components
+# => (May want not this to go to repo so commenting out for now)
+
+# www/
+

@@ -1,0 +1,22 @@
+{
+	"lang": "en",
+	"name": "My Website",
+	"short_name": "Website",
+	"description": "This is my website. There are many like it but this one is mine.",
+	"theme_color": "#336699",
+	"background_color": "#336699",
+	"start_url": "/",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "/images/small-icon.png",
+			"sizes": "48x48",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/large-icon.jpg",
+			"sizes": "512x512",
+			"type": "image/jpeg"
+		}
+	]
+}

@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+
+/* VENDORS (1st) - Default fall-backs and external files.
+====================================================================================================== */
+
+@import 'vendors/normalize';
+
+
+/* BASE - Base Variable file along with starting point Variables, Functions, Mixins, Placeholders & Typography.
+====================================================================================================== */
+
+@import 'core/variables';
+@import 'core/functions';
+@import 'core/placeholders';
+@import 'core/mixins';
+@import '../components/core/typography/typography';
+
+
+/* FRAMEWORK - Global structure and layout files.
+========================================================================== */
+
+@import 'global/global';
+@import '../components/layout/grid/grid';
+@import '../components/global/masthead/masthead';
+@import '../components/global/primary_nav/primarynav';
+@import '../components/global/footer/footer';
+
+// Specific to print rendering...
+@import 'global/print';
+
+
+/* COMPONENTS - Re-usable core and custom site components.
+========================================================================== */
+
+// Core...
+@import '../components/core/blockquotes/blockquotes';
+@import '../components/core/buttons/buttons';
+@import '../components/core/forms/forms';
+@import '../components/core/icons/icons';
+@import '../components/core/images/images';
+@import '../components/core/links/links';
+@import '../components/core/lists/lists';
+@import '../components/core/tables/tables';
+@import '../components/core/videos/videos';
+
+// Custom...
+@import '../components/units/feature/feature';
+@import '../components/units/logo/logo';
+@import '../components/units/media/media';
+@import '../components/units/messages/messages';
+@import '../components/units/section_block/sectionblock';
+@import '../components/units/social/social';
+@import '../components/units/text_block/textblock';
+
+
+/* TEMPLATES - Templates & page-specific rules / properties.
+========================================================================== */
+
+// Templates...
+@import '../components/templates/article_template/articletemplate';
+
+// Pages...
+
+
+/* VENDORS (last)
+====================================================================================================== */
+
+// @import 'vendors/_foo'; // A 3rd party plugin of some sort
+
+
+/* LAST OF THE LAST - styles that need to come last for some reason (eg. helper classes)
+====================================================================================================== */
+
+@import '../components/helpers/hidden/hidden';
+@import '../components/helpers/visually_hidden/visuallyhidden';
+@import '../components/helpers/invisible/invisible';
+
+
+// Quick fix file
+// ================
+// Styles eventually move from here to appropriate SCSS partial when decided where it they should go.
+
+@import 'shame';
+
+///////////////////////////////////////////////////////////////
+

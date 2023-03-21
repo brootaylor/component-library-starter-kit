@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Links (Global).
+   ========================================================================== */
+
+
+/* LINK VARIABLES
+============================================= */
+$link-primary: $black;
+$link-primary-hover: $black;
+
+/* LINK MIXIN
+============================================= */
+
+@mixin links(
+	$color-default: $link-primary,
+	$color-hover: $link-primary-hover,
+	$text-decoration-default: none,
+	$text-decoration-hover: none)
+	{
+		font-family: $font-family-custom-medium;
+		color: $color-default;
+		text-decoration: $text-decoration-default;
+		border-bottom: 1px solid transparent;
+
+		// Link states
+		&:hover,
+		&:active,
+		&:focus {
+			color: $color-hover;
+			text-decoration: $text-decoration-hover;
+			border-bottom-color: $black;
+		}
+}
+
+/* LINK PLACEHOLDER FOR STANDALONE TYPE LINKS
+============================================== */
+
+%link-standalone {
+	display: inline-flex;
+	align-items: center;
+
+	&:after {
+		content: "\2192";
+		font-size: 1.1rem;
+		line-height: 1;
+		padding-left: pxToEm(5px, $font-size-base);
+		position: relative;
+		top: pxToEm(-1px, $font-size-base);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+
+/* LINKS
+============================================= */
+
+a {
+    // Primary links (default values)
+    @include links;
+    transition: all 0.5s ease-in-out;
+}
+
+////////////////////////////////////////////////
+
+// Standalone type links
+/////////////////////////
+
+.link-standalone {
+	@extend %link-standalone;
+}
+
+// If needing to wrap a standalone link in a parent container
+.link-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+
+// Links in a list
+///////////////////
+
+.link-list {
+    list-style-type: none;
+    padding: 0;
+
+        li {
+            margin-bottom: pxToEm(5px, $font-size-base);
+        }
+
+        a {
+            @extend %link-standalone;
+        }
+
+}
+
+////////////////////////////////////////////////
+

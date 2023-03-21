@@ -1,0 +1,243 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+	"context": {
+		"listItems": [
+			{
+				"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+			},
+			{
+				"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+			},
+			{
+				"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+			},
+			{
+				"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+			},
+			{
+				"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+			}
+		]
+	},
+	"variants": [
+		{
+			"name": "Unordered list"
+		},
+		{
+			"name": "Ordered list",
+			"context": {
+				"orderedList": true
+			}
+		},
+		{
+			"name": "Custom unordered list",
+			"context": {
+				"listClass": "list-custom list-custom-unordered"
+			}
+		},
+		{
+			"name": "Custom unordered links list",
+			"context": {
+				"listClass": "list-custom list-custom-unordered",
+				"listItems": [
+					{
+						"link_label": "Nunc congue nisi"
+					},
+					{
+						"link_label": "Nunc congue nisi"
+					},
+					{
+						"link_label": "Nunc congue nisi"
+					},
+					{
+						"link_label": "Nunc congue nisi"
+					},
+					{
+						"link_label": "Nunc congue nisi"
+					}
+				]
+			}
+		},
+		{
+			"name": "Custom unordered nested list",
+			"context": {
+				"listClass": "list-custom list-custom-unordered",
+				"listItems": [
+					{
+						"text": "Dictum varius duis at consectetur lorem",
+						"listItems": [
+							{
+								"text": "Dictum varius duis at consectetur lorem",
+								"listItems": [
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									}
+								]
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							}
+						]
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					}
+				]
+			}
+		},
+		{
+			"name": "Custom ordered list",
+			"context": {
+				"orderedList": true,
+				"listClass": "list-custom list-custom-ordered",
+				"listItems": [
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					}
+				]
+			}
+		},
+		{
+			"name": "Custom ordered nested list",
+			"context": {
+				"orderedList": true,
+				"listClass": "list-custom list-custom-ordered",
+				"listItems": [
+					{
+						"orderedList": true,
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam",
+						"listItems": [
+							{
+								"orderedList": true,
+								"text": "Dictum varius duis at consectetur lorem",
+								"listItems": [
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									}
+								]
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							}
+						]
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam",
+						"listItems": [
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem",
+								"listItems": [
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									}
+								]
+							}
+						]
+					},
+					{
+						"orderedList": true,
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam",
+						"listItems": [
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							},
+							{
+								"text": "Dictum varius duis at consectetur lorem"
+							},
+							{
+								"orderedList": true,
+								"text": "Dictum varius duis at consectetur lorem",
+								"listItems": [
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									},
+									{
+										"text": "Dictum varius duis at consectetur lorem"
+									}
+								]
+							}
+						]
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					}
+				]
+			}
+		},
+		{
+			"name": "Custom check list",
+			"context": {
+				"listClass": "list-custom list-custom-checked",
+				"listItems": [
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					},
+					{
+						"text": "Nunc congue nisi vitae suscipit tellus mauris a diam"
+					}
+				]
+			}
+		}
+	]
+}

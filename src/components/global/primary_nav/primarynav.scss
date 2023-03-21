@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Primary navigation styles
+   ========================================================================== */
+
+.primaryNavigation {
+    .primaryNavigation-list {
+        @extend %no-list;
+        display: flex;
+        flex-wrap: nowrap;
+        font-size: 1rem;
+
+            @include break-point-min(768px) {
+                font-size: 1.125rem;
+            }
+
+            @include break-point-min(1024px) {
+                font-size: 1.3125rem;
+            }
+    }
+
+    .primaryNavigation-listItem {
+        &:first-child {
+            padding-right: pxToEm(20px, $font-size-base);
+        }
+    }
+
+    .primaryNavigation-link {
+        font-family: $font-family-custom-medium;
+        color: $brand-graphite;
+        text-decoration: none;
+        border: none;
+
+        &:hover,
+        &:focus {
+            color: $brand-azure;
+        }
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+

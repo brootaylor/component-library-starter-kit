@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-gb" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>{{ title }}</title>
+		<meta name="description" content="">
+		<meta http-equiv="cleartype" content="on">
+
+		<link rel="stylesheet" href="{{ path '/css/styles.css' }}">
+
+		{{!-- Manifest file for PWA config --}}
+		<link rel="manifest" href="{{ path '/manifest.json' }}">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ path '/ico/apple-touch-icon.png' }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ path '/ico/favicon-32x32.png' }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ path '/ico/favicon-16x16.png' }}">
+		<link rel="mask-icon" href="{{ path 'ico/safari-pinned-tab.svg' }}" color="#5bbad5">
+		<link rel="shortcut icon" href="{{ path '/ico/favicon.ico' }}">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-TileImage" content="{{ path '/ico/mstile-144x144.png' }}">
+		<meta name="msapplication-config" content="{{ path '/ico/browserconfig.xml' }}">
+		<meta name="theme-color" content="#ffffff">
+
+		<!--[if lt IE 9]>
+		<script>
+			var arr=['article','aside','footer','header','nav','section','figcaption','figure','main','template'];
+			for(var i=0;i<arr.length;i++) document.createElement(arr[i]);
+		</script>
+		<![endif]-->
+
+		<!-- Google Global Site Tag -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments)};
+			gtag('js', new Date());
+			gtag('config', 'UA-XXXXXX-X');
+		</script>
+
+	</head>
+	<body>
+
+		<!-- "Skip-to" links. Helps assistive technologies -->
+		<a class="screenreader" href="#nav">Skip to the site navigation</a>
+		<a class="screenreader" href="#main">Skip to the main content</a>

@@ -1,0 +1,24 @@
+{
+	"status": "ready",
+	"context": {},
+	"variants": [
+        {
+			"name": "Linkedin",
+            "context": {
+				"linkedin_icon": true
+            }
+		},
+		{
+			"name": "Twitter",
+            "context": {
+				"twitter_icon": true
+            }
+		},
+		{
+			"name": "Facebook",
+            "context": {
+				"facebook_icon": true
+            }
+		}
+    ]
+}

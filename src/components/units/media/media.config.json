@@ -1,0 +1,73 @@
+{
+	"status": "ready",
+    "context": {
+		"title": "'Default' media component"
+	},
+    "variants": [
+        {
+			"name": "Reversed",
+            "context": {
+				"modifier": "reversed",
+				"title": "'Reversed' media component"
+            }
+		},
+		{
+            "name": "Has Border",
+            "context": {
+				"modifier": "has-border",
+				"title": "'Has border' media component"
+            }
+		},
+		{
+            "name": "Has border reversed",
+            "context": {
+				"modifier": "has-border reversed",
+				"title": "'Has border reversed' media component"
+            }
+		},
+		{
+            "name": "Vertically aligned",
+            "context": {
+				"modifier": "align-vertical",
+				"title": "'Vertically aligned' media component"
+            }
+		},
+		{
+            "name": "Vertically aligned reversed",
+            "context": {
+				"modifier": "align-vertical reversed",
+				"title": "'Vertically aligned reversed' media component"
+            }
+		},
+		{
+			"name": "Has video",
+            "context": {
+				"has_video": true,
+				"title": "'Has video' media component"
+            }
+		},
+		{
+			"name": "Has 3rd party video",
+            "context": {
+				"has_video_3rdParty": true,
+				"title": "'Has 3rd party video' media component"
+            }
+		},
+		{
+			"name": "Visual section has heading",
+            "context": {
+				"visual_hasHeading": true,
+				"title": "'Visual section has heading' media component"
+            }
+		},
+		{
+			"name": "Visual section has heading reversed",
+            "context": {
+				"visual_hasHeading": true,
+				"modifier": "reversed",
+				"title": "'Visual section has heading reversed' media component"
+            }
+		}
+    ]
+}
+

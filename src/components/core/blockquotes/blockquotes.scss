@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Blockquote styles (Global).
+   ========================================================================== */
+
+.quote {
+	position: relative;
+	padding: pxToEm(20px, $font-size-base);
+	margin: 0;
+	font-family: $font-family-custom-medium;
+	quotes: "“""”";
+
+		@include break-point-min(768px) {
+			padding: pxToEm(60px, $font-size-base);
+		}
+
+	&::before,
+	&::after {
+		@include type-setting(4);
+		color: $brand-blue;
+		line-height: 0;
+		display: block;
+		position: relative;
+
+			@include break-point-min(768px) {
+				// Increased font-size by 40px...
+				@include type-setting(4, 20);
+			}
+	}
+
+	&::before {
+		content: open-quote;
+		top: 0;
+		left: pxToEm(-5px, $font-size-base);
+
+			@include break-point-min(768px) {
+				left: pxToEm(-10px, $font-size-base);
+			}
+	}
+
+	&::after {
+		content: close-quote;
+		position: absolute;
+		right: pxToEm(3px, $font-size-base);
+		bottom: pxToEm(3px, $font-size-base);
+	}
+
+	p {
+		@include type-setting(1);
+		line-height: 1.2;
+		margin-bottom: 0;
+
+
+			@include break-point-min(768px) {
+				line-height: 1.454546; // 32px
+			}
+	}
+
+	cite {
+		@include type-setting(0);
+		font-family: $font-family-custom-light;
+		font-style: normal;
+		display: block;
+		margin-top: pxToEm(30px, $font-size-base);
+	}
+}

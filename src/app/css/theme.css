@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* =====================================================
+   Fractal UI styles
+   ===================================================== */
+/* ==========================================================================
+   Variables (Global).
+   ========================================================================== */
+/*
+
+	////////////////////////////////
+	These are global variables
+	////////////////////////////////
+
+	Note: ==>> Module-specific variables, mixins, functions and placeholders should be kept within the correct module’s partial file:
+
+*/
+/* FONTS VARIABLE CONFIG
+============================================= */
+/* GLOBAL SPACING / LAYOUT VALUES
+============================================= */
+.Header {
+  background-color: #002f87; }

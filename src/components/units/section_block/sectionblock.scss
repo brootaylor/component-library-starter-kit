@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Section Block styles
+   ========================================================================== */
+
+.sectionBlock {
+	margin-bottom: pxToEm(40px, $font-size-base);
+
+        @include break-point-min(768px) {
+            margin-bottom: pxToEm(50px, $font-size-base);
+		}
+
+	// If section block component has a bottom border
+    &.has-border {
+        padding-bottom: pxToEm(40px, $font-size-base);
+        border-bottom: 1px solid rgba($brand-graphite, 0.2);
+
+            @include break-point-min(768px) {
+                padding-bottom: pxToEm(50px, $font-size-base);
+			}
+	}
+
+	// If section block has a background
+	&[class*=" background-"] {
+		padding: pxToEm(40px 0, $font-size-base);
+
+			@include break-point-min(768px) {
+				padding: pxToEm(50px 0, $font-size-base);
+			}
+	}
+
+	// Has background colour (blue)
+	&.background-blue {
+		background-color: $brand-blue;
+		color: $white;
+
+		// If section within the container has a border
+		.has-border {
+			border-color: rgba($brand-azure, 0.5);
+		}
+	}
+
+	// Has background colour (azure)
+	&.background-azure {
+		background-color: $brand-azure;
+
+		// If section within the container has a border
+		.has-border {
+			border-color: rgba($white, 0.2);
+		}
+	}
+
+	// Has background colour (graphite)
+	&.background-graphite {
+		background-color: $brand-graphite;
+
+		// If section within the container has a border
+		.has-border {
+			border-color: rgba($white, 0.2);
+		}
+	}
+}

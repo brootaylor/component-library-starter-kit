@@ -1,0 +1,217 @@
+/* ==========================================================================
+   Typography styles (Global).
+   ========================================================================== */
+
+// ===== @FONT-FACE CUSTOM STYLES =====
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 3112966, 2015-10-23T11:15:54-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: NHaasGroteskDSStd-35XLt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-haas-grotesk/std-display-35-xlight/
+ *
+ * Webfont: NHaasGroteskTXStd-75Bd by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-haas-grotesk/std-text-75-bold/
+ *
+ * Webfont: NHaasGroteskTXStd-65Md by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-haas-grotesk/std-text-65-medium/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3112966
+ * Licensed pageviews: 250,000
+ * Webfonts copyright: Copyright &#x00A9; 2011 - 2012 Linotype Corp., www.linotype.com. All rights reserved. This font software may not be reproduced, modified, disclosed or transferred without the express written approval of Linotype Corp. Neue Haas Grotesk is a trademark of L
+ *
+ * © 2015 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2f8006");
+
+@font-face {
+    font-family: 'NHaasGroteskDSStd-35XLt';
+    src: url('../fonts/custom-fonts/2F8006_0_0.eot');
+    src: url('../fonts/custom-fonts/2F8006_0_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/custom-fonts/2F8006_0_0.woff2') format('woff2'),
+         url('../fonts/custom-fonts/2F8006_0_0.woff') format('woff'),
+         url('../fonts/custom-fonts/2F8006_0_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NHaasGroteskTXStd-65Md';
+    src: url('../fonts/custom-fonts/2F8006_2_0.eot');
+    src: url('../fonts/custom-fonts/2F8006_2_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/custom-fonts/2F8006_2_0.woff2') format('woff2'),
+         url('../fonts/custom-fonts/2F8006_2_0.woff') format('woff'),
+         url('../fonts/custom-fonts/2F8006_2_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NHaasGroteskTXStd-75Bd';
+    src: url('../fonts/custom-fonts/2F8006_1_0.eot');
+    src: url('../fonts/custom-fonts/2F8006_1_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/custom-fonts/2F8006_1_0.woff2') format('woff2'),
+         url('../fonts/custom-fonts/2F8006_1_0.woff') format('woff'),
+         url('../fonts/custom-fonts/2F8006_1_0.ttf') format('truetype');
+}
+
+// ==========================================================================
+
+html {
+    background-color: $white;
+    color: $font-color-base;
+    font-family: $font-family-custom-light;
+    font-size: $font-size-base;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0.0325em;
+    line-height: 1.44;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: lighten($blue, 40%);
+    text-shadow: none;
+}
+
+::selection {
+    background: lighten($blue, 40%);
+    text-shadow: none;
+}
+
+// Titles (Global)
+///////////////////
+h1, .h1-style,
+h2, .h2-style,
+h3, .h3-style,
+h4, .h4-style,
+h5, .h5-style,
+h6, .h6-style {
+    font-family: $font-family-custom-bold;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1.33;
+    transition: font-size 0.2s linear;
+}
+
+@include silent-class(h1-style, h1) {
+    @include fontSize(36px);
+	margin: pxToEm(0 0 10px 0, $font-size-base);
+
+		@include break-point-min($bp-l) {
+			@include fontSize(48px);
+		}
+}
+
+@include silent-class(h2-style, h2) {
+    @include fontSize(32px);
+	margin: pxToEm(0 0 10px 0, $font-size-base);
+
+		@include break-point-min($bp-l) {
+			@include fontSize(36px);
+		}
+}
+@include silent-class(h3-style, h3) {
+    @include fontSize(24px);
+	margin: pxToEm(0 0 10px 0, $font-size-base);
+}
+@include silent-class(h4-style, h4) {
+    @include fontSize(20px);
+	margin: pxToEm(0 0 10px 0, $font-size-base);
+}
+
+@include silent-class(h5-style, h5) {
+    @include fontSize(16px);
+    margin: pxToEm(0 0 10px 0, $font-size-base);
+}
+
+@include silent-class(h6-style, h6) {
+    @include fontSize(16px);
+    margin: pxToEm(0 0 10px 0, $font-size-base);
+}
+
+// Main content paragraphs & lists
+////////////////////////////////////////
+p,
+ul,
+ol {
+	margin: pxToEm(0 0 20px 0, $font-size-base);
+}
+
+// 'lead' paragraph text
+///////////////////////////////
+.copy-lead {
+	@include fontSize(20px);
+	font-weight: normal;
+}
+
+// 'small' paragraph text
+///////////////////////////////
+.copy-small {
+	@include fontSize(12px);
+	font-weight: normal;
+
+		@include break-point-min($bp-m) {
+			@include fontSize(14px);
+		}
+}
+
+// Strong / bold text
+///////////////////////////////
+strong,
+b {
+	font-family: $font-family-custom-medium;
+	font-weight: 700;
+}
+
+// Abbreviation "abbr" styling
+///////////////////////////////
+abbr {
+
+    &[title] {
+        cursor: help;
+
+        &:after {
+            @include type-setting(0);
+            content: " (" attr(title) ")";
+
+                @include break-point-min(768px) {
+                    content: "";
+                }
+        }
+
+    }
+}
+
+// Horizontal rule
+///////////////////////////
+hr {
+	display: block;
+	height: pxToEm(1px, $font-size-base);
+	border: 0;
+	border-top: pxToEm(1px, $font-size-base) solid rgba($brand-grey, 0.4);
+	margin: pxToEm(40px auto, $font-size-base);
+	padding: 0;
+
+			@include break-point-min(768px) {
+					margin-top: pxToEm(50px, $font-size-base);
+					margin-bottom: pxToEm(50px, $font-size-base);
+			}
+
+}
+
+///////////////////////////////////////////////////
+
+

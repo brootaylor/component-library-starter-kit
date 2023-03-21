@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Lists (Global).
+   ========================================================================== */
+
+/* LISTS VARIABLES
+============================================== */
+$list-symbol-square: "\25AA";
+$list-symbol-hyphen: "\2010";
+$list-symbol-tick: "\2713";
+
+
+/* LISTS PLACEHOLDER
+============================================== */
+%list-custom {
+	list-style-type: none;
+	margin: pxToEm(20px 0, $font-size-base);
+	padding: 0;
+
+		li {
+			position: relative;
+			padding-left: pxToEm(25px, $font-size-base);
+			margin-bottom: pxToEm(15px, $font-size-base);
+			text-indent: 0;
+
+			&:before {
+				color: $brand-indigo;
+				line-height: 1;
+				position: absolute;
+				padding: 0;
+				top: 0;
+				left: 0;
+			}
+
+			// Nested list levels (eg. 2rd and 3rd levels in etc.)...
+			li {
+				&:before {
+					@include fontSize(40px);
+					content: $list-symbol-hyphen;
+					line-height: 0.4;
+					transform: none;
+				}
+			}
+		}
+}
+
+// Class to remove default list styling
+.no-list {
+	@extend %no-list;
+}
+
+/* LISTS (GENERIC / DEFAULT)
+============================================= */
+
+ul,
+ol {
+	margin-bottom: pxToEm(20px, $font-size-base);
+
+	li {
+		margin-bottom: pxToEm(5px, $font-size-base);
+	}
+}
+
+
+/* LISTS (CUSTOM)
+============================================= */
+
+.list-custom {
+	@extend %list-custom;
+
+	// From 2nd level in...
+	ul,
+	ol {
+		list-style: none;
+		padding: 0;
+		margin-top: pxToEm(15px, $font-size-base);
+	}
+
+	// Unordered list (custom)...
+	&-unordered {
+		li {
+			&:before {
+				@include fontSize(40px);
+				content: $list-symbol-square;
+				transform: rotate(45deg); // rotated 45deg to resemble a diamond shape
+				line-height: 0.6;
+			}
+		}
+	}
+
+	// Ordered list (custom)...
+	&-ordered {
+		counter-reset: item;
+
+		> li {
+			counter-increment: item;
+
+			&:before {
+				@include fontSize(24px);
+				font-family: $font-family-custom-bold;
+				content: counter(item) '.';
+			}
+
+			// From 2nd level in...
+			ol {
+				counter-reset: item;
+			}
+		}
+	}
+
+	// Checked list (custom)...
+	&-checked {
+		li {
+			&:before {
+				@include fontSize(24px);
+				content: $list-symbol-tick;
+				font-weight: 700;
+			}
+		}
+	}
+}
+
+/////////////////////////////////////

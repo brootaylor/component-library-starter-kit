@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Media block (Global).
+   * @desc  =  Media block - image on left/right, text next to it.
+   ========================================================================== */
+
+//////////////////////////////////////////////////////////////////
+// MEDIA 'OBJECTS' - TYPICALLY CONTAINS A LINKABLE IMAGE AND TEXT
+//////////////////////////////////////////////////////////////////
+// Standard media object. Typically horizontal layout with image to the left or right. It will 'stack' at smaller screen sizes
+
+.media {
+    display: flex;
+    flex-direction: column;
+	margin-bottom: pxToEm(40px, $font-size-base);
+
+        @include break-point-min(768px) {
+            flex-direction: row;
+            margin-bottom: pxToEm(50px, $font-size-base);
+        }
+
+    // Image / Video element
+    > .mediaVisual {
+        position: relative;
+        margin-top: pxToEm(40px, $font-size-base);
+        order: 2;
+
+            @include break-point-min(768px) {
+                flex: 1 0 50%;
+                max-width: 50%;
+                order: 1;
+                margin-top: 0;
+				padding-right: pxToEm(20px, $font-size-base);
+				text-align: left;
+            }
+
+            figure,
+            figure img {
+                margin: 0;
+            }
+    }
+
+    // Content element
+    > .mediaContent {
+        order: 1;
+
+            @include break-point-min(768px) {
+                flex: 1 1 50%;
+                max-width: 50%;
+                order: 2;
+                padding-left: pxToEm(20px, $font-size-base);
+            }
+    }
+
+    // Visual section contains a heading
+    &.visual-hasHeading {
+        > .mediaVisual {
+            order: 1;
+            margin-top: 0;
+            margin-bottom: pxToEm(40px, $font-size-base);
+
+                @include break-point-min(768px) {
+                    margin-bottom: 0;
+                }
+        }
+
+        > .mediaContent {
+            order: 2;
+        }
+    }
+
+    // Centre / vertically align content & image / video
+    &.align-vertical {
+            @include break-point-min(768px) {
+                align-items: center;
+            }
+
+        > .mediaVisual {
+            order: 1;
+            margin-top: 0;
+            margin-bottom: pxToEm(40px, $font-size-base);
+
+                @include break-point-min(768px) {
+                    margin-bottom: 0;
+                }
+        }
+
+        > .mediaContent {
+            order: 2;
+        }
+    }
+
+    // If media component has a bottom border
+    &.has-border {
+        padding-bottom: pxToEm(40px, $font-size-base);
+        border-bottom: 1px solid rgba($brand-graphite, 0.2);
+
+            @include break-point-min(768px) {
+                padding-bottom: pxToEm(50px, $font-size-base);
+            }
+    }
+
+    // Reverse visual (image or video) and text order
+    &.reversed {
+        > .mediaVisual {
+            @include break-point-min(768px) {
+                order: 2;
+                padding-right: 0;
+				padding-left: pxToEm(20px, $font-size-base);
+				text-align: right;
+            }
+        }
+
+        > .mediaContent {
+            @include break-point-min(768px) {
+                order: 1;
+                padding-left: 0;
+                padding-right: pxToEm(20px, $font-size-base);
+            }
+        }
+    }
+}
+
+// Stacked media object. This object / component is always vertically stacked
+.media-stacked {
+    > .mediaVisual {
+        display: inline-block;
+        margin-bottom: pxToEm(15px, $font-size-base);
+        transition: max-width 0.3s;
+        border-radius: 50%;
+
+        img {
+            display: block;
+            border-radius: 50%;
+            transform: scale(1.01);
+            transition: all 0.5s;
+        }
+    }
+    > a.mediaVisual {
+        overflow: hidden;
+        -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); // Safari fix to stop img (child) growing beyond the parent container
+
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////

@@ -1,0 +1,262 @@
+/* ==========================================================================
+   Button styles (Global).
+   ========================================================================== */
+
+
+
+/* BUTTON PLACEHOLDER - (Global button rules)
+============================================== */
+
+%btn {
+	font-family: $font-family-custom-medium;
+	font-size: 1.3125rem;
+	font-weight: normal;
+	color: $white;
+	line-height: 1.14;
+    cursor: pointer;
+    display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	padding: pxToEm(8px 15px, $font-size-base);
+	margin: pxToEm(10px 0, $font-size-base);
+	border: 0;
+	border-radius: 4px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	zoom: 1\9;
+	overflow: visible\9;
+}
+
+/* BUTTON COLOURS MIXIN
+============================================= */
+
+@mixin btn-colors(
+	$color-back,
+	$color-border,
+	$color-text,
+	$color-back-hover,
+	$color-border-hover,
+	$color-text-hover,
+	$color-text-active)
+	{
+		background-color: $color-back;
+		border: 1px solid $color-border;
+		color: $color-text;
+		transition: background-color 0.25s;
+
+		// Hover & focus state
+		&:hover,
+		&:focus {
+			outline: 0;
+			background-color: $color-back-hover;
+			border-color: $color-border-hover;
+			color: $color-text-hover;
+		}
+		// Active state
+		&:active {
+			outline: 0;;
+			color: $color-text-active;
+		}
+	}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+
+/* BUTTONS
+============================================= */
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// HOW IT WORKS
+// =========================
+// eg...
+// class="button"											(Button base class)
+// class="button primary"									(Button type class added)
+// class="button primary disabled"							(Button size modifier class added)
+// class="button primary disabled fullWidth"				(Additional button modifier class added)
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+a,
+button,
+input,
+span {
+
+	&.button {
+
+		// Base button styles
+		// ===================
+		@extend %btn;
+		@include btn-colors(
+			$brand-azure, // background colour
+			$brand-azure, // border colour
+			$white, // text colour
+			$brand-azure, // background colour (hover)
+			$brand-azure, // border colour (hover)
+			$white, // text colour (hover)
+			$white // text colour (active)
+		);
+
+			@include break-point-min(640px) {
+				width: auto;
+			}
+
+			// Button types
+			// =========================
+
+			// Primary button
+			&.primary {
+				box-shadow: none;
+				transition: box-shadow 0.25s;
+
+				&:hover,
+				&:focus {
+					box-shadow: 0 0 10px 2px rgba($brand-azure, 0.4);
+				}
+
+				// If primary button is disabled...
+				&.disabled {
+					&:hover,
+					&:focus {
+						box-shadow: none;
+					}
+				}
+			}
+
+			// Secondary button
+			&.secondary {
+				@include btn-colors(
+					$white, // background colour
+					$brand-azure, // border colour
+					$brand-azure, // text colour
+					$brand-azure, // background colour (hover)
+					$brand-azure, // border colour (hover)
+					$white, // text colour (hover)
+					$white // text colour (active)
+				);
+
+				// If secondary button is disabled...
+				&.disabled {
+					&:hover,
+					&:focus {
+						background-color: $white;
+						color: $brand-azure;
+					}
+				}
+			}
+
+			// Tertiary button
+			&.tertiary {
+				font-size: 1.125rem;
+				box-shadow: none;
+				transition: box-shadow 0.25s;
+
+				&:hover,
+				&:focus {
+					box-shadow: 0 0 10px 2px rgba($brand-azure, 0.4);
+				}
+
+				// If primary button is disabled...
+				&.disabled {
+					&:hover,
+					&:focus {
+						box-shadow: none;
+					}
+				}
+			}
+
+			// Quaternary button
+			&.quaternary {
+				@include btn-colors(
+					$white, // background colour
+					$brand-azure, // border colour
+					$brand-azure, // text colour
+					$brand-azure, // background colour (hover)
+					$brand-azure, // border colour (hover)
+					$white, // text colour (hover)
+					$white // text colour (active)
+				);
+				font-size: 1.125rem;
+
+				// If quaternary button is disabled...
+				&.disabled {
+					&:hover,
+					&:focus {
+						background-color: $white;
+						color: $brand-azure;
+					}
+				}
+			}
+
+			// Button that needs to fill entire width of given space (modifier)
+			// =================================================================
+			&.fullWidth {
+				width: 100%;
+			}
+
+			// Disabled button (modifier)
+			// ===========================
+			&.disabled {
+				@include opacity(0.4);
+				cursor: not-allowed;
+
+					// Disabled hover state
+					&:hover {
+						@include opacity(0.4);
+					}
+			}
+	}
+}
+
+// Wrapper <span> if you need to add an icon to an <input> element
+// ================================================================
+span {
+	&.button {
+		input {
+			background-color: transparent;
+		    cursor: pointer;
+		    border: 0;
+		    outline: 0;
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+// Button group (grouping 2 or more buttons)
+// ==========================================
+.buttonGroup {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: pxToEm(30px, $font-size-base);
+
+		@include break-point-min(480px) {
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		& > .buttonGroup-item {
+			margin-top: 0;
+			margin-bottom: 0;
+			width: 100%;
+
+				@include break-point-min($bp-m) {
+					width: auto;
+				}
+
+			&:not(:last-child) {
+				margin-bottom: pxToEm(15px, $font-size-base);
+
+				@include break-point-min($bp-m) {
+					margin-bottom: 0;
+					margin-right: pxToEm(15px, $font-size-base);
+				}
+			}
+		}
+}
+
+////////////////////////////////////////////////////////////

@@ -1,0 +1,49 @@
+{
+	"status": "ready",
+	"preview": "@preview",
+	"context": {},
+	"variants": [
+		{
+			"name": "Two column split",
+			"context": {
+				"twoColumns": true,
+				"modifier": "grid-halves"
+			}
+		},
+		{
+			"name": "Three column split",
+			"context": {
+				"threeColumns": true,
+				"modifier": "grid-thirds"
+			}
+		},
+		{
+			"name": "Three then two column split",
+			"context": {
+				"threeThenTwoColumns": true,
+				"modifier": "grid-halves-thirds"
+			}
+		},
+		{
+			"name": "Four column split",
+			"context": {
+				"fourColumns": true,
+				"modifier": "grid-quarters"
+			}
+		},
+		{
+			"name": "One third two thirds column split",
+			"context": {
+				"oneTwoThirdSplit": true,
+				"modifier": "grid-narrowWide"
+			}
+		},
+		{
+			"name": "Two thirds one third column split",
+			"context": {
+				"twoOneThirdSplit": true,
+				"modifier": "grid-wideNarrow"
+			}
+		}
+	]
+}

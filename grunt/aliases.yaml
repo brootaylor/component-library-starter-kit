@@ -1,0 +1,41 @@
+#############################################################################
+# GRUNT BUILD TASKS
+#############################################################################
+
+# "grunt" => full 'unoptimised' build (use on initial setup)
+default:
+- 'clean'
+- 'sass'
+- 'postcss'
+- 'import'
+- 'babel:dev'
+- 'processhtml'
+- 'copy:app_output'  # Copies to 'app' directory
+
+# "grunt prod" => full 'optimised' build (Outputs ready for production)
+prod:
+- 'clean'
+- 'sass'
+- 'postcss'
+- 'cssmin'
+- 'import'
+- 'babel:prod'
+- 'copy:app_output'  # Copies to 'app' directory
+- 'imagemin'
+- 'copy:dist_output' # Copies to 'dist' directory
+
+# "grunt dev" => Watches applicable tasks while developing / integrating F/E & B/E locally
+dev:
+- 'watch'
+
+# "grunt fractal" => Starts Fractal web UI server. Used while developing
+fractal:
+- 'shell:startFractal'
+
+# "grunt specs" => Runs the Jasmine spec test suites
+specs:
+- 'jasmine'
+
+# "grunt pacts" => Runs the Pact Consumer Driven Contracts or 'CDCs'
+pacts:
+- 'pact'

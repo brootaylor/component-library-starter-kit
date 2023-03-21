@@ -1,0 +1,31 @@
+{{#if yieldOnlyPreview}}
+	{{!-- Typically for static pages (eg. 500 error page)... --}}
+	{{{ yield }}}
+{{else}}
+	{{!-- 'Default' preview... --}}
+	{{> @doc_head }}
+
+		{{!-- For full page view add this... --}}
+		{{#if pageViewFull}}
+			{{render "@masthead"}}
+		{{/if}}
+
+		{{!-- Components like the footer may not need this in the preview... --}}
+		{{#unless noMainSection}}
+			<main id="main">
+		{{/unless}}
+
+			{{{ yield }}}
+
+		{{!-- Components like the footer may not need this in the preview... --}}
+		{{#unless noMainSection}}
+			</main>
+		{{/unless}}
+
+		{{!-- For full page view add this... --}}
+		{{#if pageViewFull}}
+			{{render "@footer"}}
+		{{/if}}
+
+	{{> @doc_base }}
+{{/if}}
