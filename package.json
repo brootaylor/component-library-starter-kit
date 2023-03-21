@@ -1,14 +1,14 @@
 {
-	"name": "front-end-build-framework",
+	"name": "component-library-starter-kit",
 	"version": "0.11.2018",
 	"description": "Front-end solution for building components, templates and pages.",
 	"repository": {
 		"type": "git",
-		"url": "https://brootaylor@bitbucket.org/brootaylor/front-end-component-library-framework.git"
+		"url": "https://github.com/brootaylor/component-library-starter-kit"
 	},
 	"author": "Bruce Taylor (http://brootaylor.com)",
 	"license": "MIT",
-	"homepage": "https://brootaylor@bitbucket.org/brootaylor/front-end-component-library-framework.git",
+	"homepage": "https://github.com/brootaylor/component-library-starter-kit",
 	"fractal": {
 		"main": "fractal.config.js"
 	},
